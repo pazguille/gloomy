@@ -1,3 +1,10 @@
+/*!
+ * Gloomy v1.0.0
+ * A simple and semantic substitution template engine for the browser.
+ * Project: https://github.com/pazguille/gloomy
+ * Copyright (c) 2013, by @pazguille (http://pazguille.me)
+ * Released under the MIT license.
+ */
 (function (window) {
     'use strict';
 
@@ -9,7 +16,6 @@
             var key = arguments[1],
                 keys = key.split('.'),
                 value;
-
 
             function defineValue(k) {
                 value = value[k];
@@ -26,6 +32,13 @@
         });
     }
 
+    /**
+     * A simple and semantic substitution template engine for the browser.
+     * @param {HTMLElement} [template] - A given gloomy template.
+     * @param {HTMLElement} [container] -A given HTMLElement to put the template.
+     * @param {Array} [data] - A given data to render.
+     * @returns {gloomy} Returns a new instance of Gloomy.
+     */
     function Gloomy(template, container, data) {
 
         if (template) {
@@ -43,18 +56,33 @@
         return this;
     }
 
+    /**
+     * Sets what template would you to use.
+     * @param {HTMLElement} [template] - A given gloomy template.
+     * @returns {gloomy} Returns an instance of Gloomy.
+     */
     Gloomy.prototype.use = function (template) {
         this.template = template;
 
         return this;
     };
 
+    /**
+     * Sets a container to put the rendered template.
+     * @param {HTMLElement} [container] -A given HTMLElement to put the template.
+     * @returns {gloomy} Returns an instance of Gloomy.
+     */
     Gloomy.prototype.into = function (container) {
         this.container = container;
 
         return this;
     };
 
+    /**
+     * Render a given data with a template into a container.
+     * @param {Array} data - A given data to render.
+     * @returns {gloomy} Returns an instance of Gloomy.
+     */
     Gloomy.prototype.render = function (data) {
         var that = this,
             html = [];
