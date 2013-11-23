@@ -1,0 +1,23 @@
+{
+  "name": "gloomy",
+  "version": "1.0.0",
+  "homepage": "https://github.com/pazguille/gloomy",
+  "description": "A simple and semantic substitution template engine for the browser.",
+  "main": "gloomy.js",
+  "keywords": [
+    "template",
+    "substitution",
+    "replace"
+  ],
+  "authors": [
+    "@pazguille <guille87paz@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
