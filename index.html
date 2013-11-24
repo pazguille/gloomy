@@ -108,7 +108,7 @@
 
         <section>
             <h2>Templates</h2>
-            <p>Write your templates by using plain HTML in a &lt;script&gt; element. You must put your variables as a gloomy expression (:[foo.bar]).</p>
+            <p>Write your templates by using plain HTML in a &lt;script&gt; element. You must put your variables as a gloomy expressions (e.g. :[foo.bar]).</p>
             <pre><code class="language-markup">
 &lt;script id="user-template" type="text/gloomy"&gt;
     &lt;li id=":[id]" class="user-box"&gt;
@@ -151,12 +151,13 @@ var user = [
 
         <section>
             <h2>Render</h2>
+            <p>Create a new instance of Gloomy and enjoy!</p>
             <pre><code class="language-javascript">
 var view = document.querySelector('#user-template'),
     container = document.querySelector('#user-list'),
-    template = new Gloomy(view, container);
+    gloomy = new Gloomy(view, container);
 
-template.render(data);
+gloomy.render(data);
             </code></pre>
         </section>
 
