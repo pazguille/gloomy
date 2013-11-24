@@ -33,7 +33,7 @@
     }
 
     /**
-     * A simple and semantic substitution template engine for the browser.
+     * Creates a new instance of `Gloomy`.
      * @param {HTMLElement} [template] - A given gloomy template.
      * @param {HTMLElement} [container] -A given HTMLElement to put the template.
      * @param {Array} [data] - A given data to render.
@@ -57,7 +57,7 @@
     }
 
     /**
-     * Sets what template would you to use.
+     * Sets what gloomy template would you to use.
      * @param {HTMLElement} [template] - A given gloomy template.
      * @returns {gloomy} Returns an instance of Gloomy.
      */
