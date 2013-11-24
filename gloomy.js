@@ -35,8 +35,8 @@
     /**
      * Creates a new instance of `Gloomy`.
      * @param {HTMLElement} [template] - A given gloomy template.
-     * @param {HTMLElement} [container] -A given HTMLElement to put the template.
-     * @param {Array} [data] - A given data to render.
+     * @param {HTMLElement} [container] - A given HTMLElement to insert the result of a template rendered with the data.
+     * @param {Array} [data] - A given model data to render.
      * @returns {gloomy} Returns a new instance of Gloomy.
      */
     function Gloomy(template, container, data) {
@@ -68,8 +68,8 @@
     };
 
     /**
-     * Sets a container to put the rendered template.
-     * @param {HTMLElement} [container] -A given HTMLElement to put the template.
+     * Sets a container to insert the result of a template rendered with the data.
+     * @param {HTMLElement} [container] - A given HTMLElement to insert the result of a template rendered with the data.
      * @returns {gloomy} Returns an instance of Gloomy.
      */
     Gloomy.prototype.into = function (container) {
@@ -79,8 +79,8 @@
     };
 
     /**
-     * Render a given data with a template into a container.
-     * @param {Array} data - A given data to render.
+     * Render the template with a given data and inserts the output in a container.
+     * @param {Array} data - A given model data to render.
      * @returns {gloomy} Returns an instance of Gloomy.
      */
     Gloomy.prototype.render = function (data) {

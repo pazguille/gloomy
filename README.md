@@ -5,7 +5,7 @@ A simple and semantic substitution template engine for the browser. :[
 ## How-to
 
 ### Templates
-Write your templates by using plain HTML in a `<script>` element. You must put your variables as a gloomy expressions (e.g. `:[foo.bar]`).
+Write your templates by using plain HTML in a `<script>` element. You must put your variables between a gloomy expression (e.g. :[foo.bar]).
 
 ```html
 <script id="user-template" type="text/gloomy">
@@ -20,7 +20,7 @@ Write your templates by using plain HTML in a `<script>` element. You must put y
 ```
 
 ### Data
-Create your `data` as JSON objects.
+Create your model `data` as JSON objects.
 
 ```js
 var user = [
@@ -47,12 +47,12 @@ var user = [
 
 ### Render
 
-You should create a `container` to put the template with rendered data:
+You should create a `container` to insert the result of a template rendered with the data.
 ```html
 <ul id="user-list"></ul>
 ```
 
-Then, create a new instance of `Gloomy` and enjoy!
+Then, create a new instance of Gloomy and enjoy!
 
 ```js
 var template = document.querySelector('#user-template'),
@@ -69,8 +69,8 @@ gloomy.render(data);
 ### Gloomy([template], [container], [data])
 Create a new instance of `Gloomy`.
 - `template`: A given gloomy template.
-- `container`: A given HTMLElement to put the template.
-- `data`: A given data to render.
+- `container`: A given HTMLElement to insert the result of a template rendered with the data.
+- `data`: A given model data to render.
 
 ```js
 var gloomy = new Gloomy(template, container, data);
@@ -85,16 +85,16 @@ gloomy.use(template);
 ```
 
 ### Gloomy#into(container)
-Sets a container to put the rendered template.
-- `container`: A given HTMLElement to put the template.
+Sets a container to insert the result of a template rendered with the data.
+- `container`: A given HTMLElement to insert the result of a template rendered with the data.
 
 ```js
 gloomy.into(container);
 ```
 
 ### Gloomy#render(data)
-Render a given data with a template into a container.
-- `data`: A given data to render.
+Render the template with a given data and inserts the output in a container.
+- `data`: A given model data to render.
 
 ```js
 gloomy.render(data);
