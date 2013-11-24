@@ -18,8 +18,9 @@ Write your templates by using plain HTML in a `<script>` element. You must put y
     </li>
 </script>
 ```
+
 ### Data
-Create your data as `JSON` objects.
+Create your `data` as JSON objects.
 
 ```js
 var user = [
@@ -45,12 +46,18 @@ var user = [
 ```
 
 ### Render
-Create a new instance of `Gloomy` and enjoy!
+
+You should create a `container` to put the template with rendered data:
+```html
+<ul id="user-list"></ul>
+```
+
+Then, create a new instance of `Gloomy` and enjoy!
 
 ```js
-var view = document.querySelector('#user-template'),
+var template = document.querySelector('#user-template'),
     container = document.querySelector('#user-list'),
-    gloomy = new Gloomy(view, container);
+    gloomy = new Gloomy(template, container);
 
 gloomy.render(data);
 ```
