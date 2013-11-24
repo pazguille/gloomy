@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Gloomy.js: A simple and semantic substitution template engine for the browser.</title>
+        <link rel="stylesheet" href="prism.css">
+        <style>
+            body {
+                font-family: "Helvetica Neue", Helvetica, Arial, serif;
+                color: #444;
+                margin: 0;
+            }
+
+            a {
+                color: #E74C3C;
+            }
+
+            h1 {
+                font-size: 10em;
+                line-height: 1em;
+                background-color: #e74c3c;
+                color: #FFF;
+                margin: 0 auto;
+                text-align: center;
+            }
+
+            .subtitle {
+                font-size: 2.5em;
+                width: 50%;
+                margin: 70px auto;
+                text-align: center;
+            }
+
+            section {
+                width: 70%;
+                margin: 50px auto 0;
+            }
+
+
+            .user-box {
+                display: inline-block;
+                border-radius: .5em .2em;
+                margin: 2em;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+                text-align: left;
+                position: relative;
+                vertical-align: top;
+                min-height: 5em;
+                padding: 5px 20px 5px 115px;
+                border: solid 3px #1A171B;
+                box-shadow: 3px 3px 0 #E74C3C inset, 3px 3px 0 #FFF;
+                list-style: none;
+            }
+
+            .user-box-title {
+                font-size: 1.2em;
+                margin: 5px 0;
+            }
+
+            .user-box-avatar {
+                display: block;
+                position: absolute;
+                top: -25px;
+                left: 15px;
+                border: solid 3px #1A171B;
+                border-radius: .2em .7em .2em .5em;
+                box-shadow: 3px 2px 0 #FFF;
+                padding: 3px 0 0 3px;
+                background-color: #FFF;
+            }
+
+            footer {
+                margin: 30px auto;
+                text-align: center;
+            }
+
+            .heart {
+                font-style: normal;
+                font-weight: 500;
+                color: #c0392b;
+                text-decoration: none;
+            }
+
+            #twitter {
+                position: absolute;
+                top: 20px;
+                left: 20px;
+            }
+
+            #github {
+                display: inline-block;
+                position: fixed;
+                top: 0;
+                right: 0;
+                z-index: 100;
+                border: 0;
+                width: 149px;
+                height: 149px;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>gloomy.js :[</h1>
+            <h2 class="subtitle">A simple and semantic substitution template engine for the browser.</h2>
+        </header>
+
+        <section>
+            <h2>Templates</h2>
+            <p>Write your templates by using plain HTML in a &lt;script&gt; element. You must put your variables as a gloomy expression (:[foo.bar]).</p>
+            <pre><code class="language-markup">
+&lt;script id="user-template" type="text/gloomy"&gt;
+    &lt;li id=":[id]" class="user-box"&gt;
+        &lt;h2 class="user-box-title"&gt;
+            &lt;a href=":[website]"&gt;:[user.fullname]&lt;/a&gt;
+        &lt;/h2&gt;
+        &lt;img src=":[user.pic]" width="80" height="80" alt=":[user.fullname]" class="user-box-avatar"&gt;
+        &lt;a href="https://twitter.com/:[username]"&gt;@:[username]&lt;/a&gt;
+    &lt;/li&gt;
+&lt;/script&gt;
+            </code></pre>
+        </section>
+
+        <section>
+            <h2>Data</h2>
+            <p>Create your data as JSON objects.</p>
+            <pre><code class="language-javascript">
+var user = [
+    {
+        'id': 1,
+        'username': 'pazguille',
+        'website': 'http://pazguille.me',
+        'user':{
+            'fullname': 'Guille Paz',
+            'pic': 'http://twitter.com/api/users/profile_image/pazguille?size=bigger'
+        }
+    },
+    {
+        'id': 2,
+        'username': 'frontendrescue',
+        'website': 'http://uptodate.frontendrescue.org/',
+        'user':{
+            'fullname': 'Front-end Rescue',
+            'pic': 'http://twitter.com/api/users/profile_image/frontendrescue?size=bigger'
+        }
+    }
+];
+            </code></pre>
+        </section>
+
+        <section>
+            <h2>Render</h2>
+            <pre><code class="language-javascript">
+var view = document.querySelector('#user-template'),
+    container = document.querySelector('#user-list'),
+    template = new Gloomy(view, container);
+
+template.render(data);
+            </code></pre>
+        </section>
+
+        <section>
+            <h2>Result</h2>
+            <ul id="user-list"></ul>
+         </section>
+
+        <script id="user-template" type="text/gloomy">
+            <li  id=":[id]" class="user-box">
+                <h2 class="user-box-title">
+                    <a href=":[website]">:[user.fullname]</a>
+                </h2>
+                <img src=":[user.pic]" width="80" height="80" alt=":[user.fullname]" class="user-box-avatar">
+                <a href="https://twitter.com/:[username]">@:[username]</a>
+            </li>
+        </script>
+
+        <footer>
+            <iframe id="twitter" allowtransparency="true" frameborder="0" width="100" height="22" scrolling="no" src="https://platform.twitter.com/widgets/tweet_button.html?text=Gloomy.js%3A%20A%20simple%20and%20semantic%20substitution%20template%20engine%20for%20the%20browser.&amp;url=http%3A%2F%2Fpazguille.github.io%2Fgloomy"></iframe>
+
+            <a href="https://github.com/pazguille/gloomy" id="github"><img width="149" height="149" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+
+            by <a href="http://pazguille.me/">Guille Paz</a> with <a href="http://welovefrontend.org/" class="heart">❤</a>
+        </footer>
+
+        <script src="gloomy.min.js"></script>
+        <script src="prism.js"></script>
+        <script>
+            var data = [
+                {
+                    'id': 1,
+                    'username': 'pazguille',
+                    'website': 'http://pazguille.me',
+                    'user':{
+                        'fullname': 'Guille Paz',
+                        'pic': 'http://twitter.com/api/users/profile_image/pazguille?size=bigger'
+                    }
+                },
+                {
+                    'id': 2,
+                    'username': 'frontendrescue',
+                    'website': 'http://uptodate.frontendrescue.org/',
+                    'user':{
+                        'fullname': 'Front-end Rescue',
+                        'pic': 'http://twitter.com/api/users/profile_image/frontendrescue?size=bigger'
+                    }
+                }],
+                view = document.querySelector('#user-template'),
+                container = document.querySelector('#user-list'),
+                template = new Gloomy(view, container);
+
+            template.render(data);
+        </script>
+    </body>
+</html>
